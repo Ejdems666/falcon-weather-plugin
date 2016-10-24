@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Falcon Weather Plugin
 Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
@@ -9,11 +8,13 @@ Author: Adam Becvar
 Author URI: http://adambecvar.cz
 License: A "Slug" license name e.g. GPL2
 */
+use Plugin\Plugin;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-require 'autoloader.php';
+require __DIR__ . '/vendor/autoload.php';
 
-$plugin = new Falcon_Weather_Plugin();
+$plugin = new Plugin();
 $plugin->run();

@@ -1,5 +1,8 @@
 {
     "require": {
         "cmfcmf/openweathermap-php-api": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {"Plugin\\": "src/"}
     }
 }

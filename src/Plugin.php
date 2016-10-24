@@ -1,12 +1,13 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: Ejdems
  * Date: 24/10/2016
  * Time: 13:24
  */
-class Falcon_Weather_Plugin {
+namespace Plugin;
+
+class Plugin {
 	private $hood_loader;
 
 	public function __construct() {
