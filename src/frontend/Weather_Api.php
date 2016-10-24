@@ -9,6 +9,7 @@
 namespace Plugin\Frontend;
 
 use Cmfcmf\OpenWeatherMap;
+use Cmfcmf\OpenWeatherMap\CurrentWeather;
 use Plugin\Admin\Settings;
 
 class Weather_Api extends OpenWeatherMap {
@@ -17,6 +18,9 @@ class Weather_Api extends OpenWeatherMap {
 		parent::__construct( $api_key );
 	}
 
+	/**
+	 * @return CurrentWeather[]
+	 */
 	public function get_falcon_weather() {
 		try {
 			return $this->get_all_cities();

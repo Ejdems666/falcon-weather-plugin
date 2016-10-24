@@ -16,6 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 require __DIR__ . '/vendor/autoload.php';
 define('MAIN_FILE_PATH',__FILE__);
+define('FRONTEND_PATH',plugin_dir_url( __FILE__ ).'/src/frontend');
 
 $plugin = new Plugin();
 $plugin->run();
