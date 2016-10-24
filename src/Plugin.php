@@ -7,14 +7,30 @@
  */
 namespace Plugin;
 
+use Plugin\Admin\Settings;
+
 class Plugin {
-	private $hood_loader;
+	const SLUG = 'falcon-weather-plugin';
+	/** @var Hook_Loader */
+	private $hook_loader;
+	private $version = '1.0';
+
+	public function get_version() {
+		return $this->version;
+	}
 
 	public function __construct() {
-		$this->hood_loader = new Hook_Loader();
+		$this->hook_loader = new Hook_Loader();
 	}
 
 	public function run() {
+		$this->init_admin_hooks();
+		$this->hook_loader->run();
+	}
 
+	private function init_admin_hooks() {
+		$settings = new Settings;
+		$this->hook_loader->add_action( 'admin_init', $settings, 'settings_init' );
+		$this->hook_loader->add_action( 'admin_menu', $settings, 'add_settings_page' );
 	}
 }
