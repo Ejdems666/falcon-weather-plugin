@@ -8,9 +8,11 @@
 namespace Plugin;
 
 use Plugin\Admin\Settings;
+use Plugin\Frontend\Short_Code;
 
 class Plugin {
 	const SLUG = 'falcon-weather-plugin';
+
 	/** @var Hook_Loader */
 	private $hook_loader;
 	private $version = '1.0';
@@ -25,6 +27,7 @@ class Plugin {
 
 	public function run() {
 		$this->init_admin_hooks();
+		$short_code = new Short_Code();
 		$this->hook_loader->run();
 	}
 
