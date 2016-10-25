@@ -6,9 +6,12 @@
 		     src="<?php echo FRONTEND_PATH ?>/assets/icons/<?php echo $city->weather->icon ?>.svg">
 		<ul class="description">
 			<li><?php echo $city->weather->description ?></li>
-			<li class="temperature"><?php echo substr($city->temperature->now,0,-6)?>
-				<img src="<?php echo FRONTEND_PATH ?>/assets/icons/celsius.svg">
+			<li>
+				<?php echo $city->temperature->now->getValue(); ?>
+				<img class="temperature-unit" src="<?php echo FRONTEND_PATH ?>/assets/icons/<?php echo $city->temperature->getUnit(); ?>.svg">
+				<?php echo $this->getTemperatureIcon($city->temperature); ?>
 			</li>
+			<li><?php echo $city->wind->speed.' '.$this->getWindIcon($city->wind); ?></li>
 		</ul>
 	</div>
 <?php } ?>

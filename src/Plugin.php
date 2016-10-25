@@ -28,6 +28,7 @@ class Plugin {
 	public function run() {
 		$this->init_admin_hooks();
 		$short_code = new Short_Code();
+		$this->hook_loader->add_action('wp_enqueue_scripts',$short_code,'enqueue_styles');
 		$this->hook_loader->run();
 	}
 
