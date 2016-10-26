@@ -2,7 +2,6 @@
 namespace Plugin;
 
 use Plugin\Admin\Settings;
-use Plugin\Frontend\Api;
 use Plugin\Frontend\Short_Code;
 
 class Plugin {
@@ -27,7 +26,7 @@ class Plugin {
 	}
 
 	private function set_admin_hooks() {
-		$settings = new Settings;
+		$settings = new Settings();
 		$this->hook_loader->add_action( 'admin_init', $settings, 'settings_init' );
 		$this->hook_loader->add_action( 'admin_menu', $settings, 'add_settings_page' );
 	}
