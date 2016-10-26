@@ -42,11 +42,12 @@
 	}
 
 	function handle_server_response(data) {
+		console.log(data);
 		if (data['error'] != undefined) {
 			console.log(data['error']);
 		} else if(data['data'] != undefined){
 			weather_boxes = "";
-			jQuery.each(data['data']['cities'], function (index, city_data) {
+			j.each(data['data']['cities'], function (index, city_data) {
 				weather_boxes += create_box(city_data);
 			});
 			j('#weather').html(weather_boxes);
@@ -64,7 +65,7 @@
 			'<img class="temperature-unit" src="' + frontend_path + '/icons/' + data.temperature.unit + '.svg">' +
 			get_temperature_icon(data.temperature) +
 			'</li> ' +
-			'<li>' + data.wind.speed + get_wind_icon(data.wind) + '</li> ' +
+			'<li>' + data.wind.speed + ' ' + data.wind.unit + get_wind_icon(data.wind) + '</li> ' +
 			'</ul> ' +
 			'</div>';
 	}
@@ -77,16 +78,22 @@
 		return '<img src="' + frontend_path + '/icons/' + icon + '" alt="wind" ' + class_attr + ' title="' + wind.direction + '">';
 	}
 	function get_temperature_icon(temperature) {
-		icon = get_icon('temperature', temperature);
+		icon = get_icon('temperature', temperature.value);
 		return '<img src="' + frontend_path + '/icons/' + icon + '" alt="temperature">';
 	}
 	function get_icon(type, actualValue) {
-		j(unit_mapper[unit_system][type]).each(function (key, measurement) {
+		var icon = null;
+		j.each(unit_mapper[unit_system][type], function (key, measurement) {
 			if (actualValue < measurement) {
-				return type + '-' + key + '.svg';
+				console.log(type+' '+actualValue+' '+measurement + key);
+				icon = type + '-' + key + '.svg';
+				return false;
 			}
 		});
-		return type + '-high.svg';
+		if(icon == null) {
+			return type + '-high.svg';
+		}
+		return icon;
 	}
 </script>
 <div id="falcon-weather">

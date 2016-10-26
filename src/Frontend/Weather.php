@@ -36,8 +36,9 @@ class Weather extends OpenWeatherMap {
 			$this->data['data']['cities'][ $key ]['temperature']['unit']    = $weather->temperature->getUnit();
 			$this->data['data']['cities'][ $key ]['weather']['description'] = $weather->weather->description;
 			$this->data['data']['cities'][ $key ]['weather']['icon']        = $weather->weather->icon;
-			$this->data['data']['cities'][ $key ]['wind']['speed']          = $weather->wind->speed->getFormatted();
+			$this->data['data']['cities'][ $key ]['wind']['speed']          = $weather->wind->speed->getValue();
 			$this->data['data']['cities'][ $key ]['wind']['direction']      = $weather->wind->direction->getFormatted();
+			$this->data['data']['cities'][ $key ]['wind']['unit']           = $weather->wind->speed->getUnit();
 		}
 	}
 }
