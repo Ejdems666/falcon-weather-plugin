@@ -8,9 +8,34 @@
 	};
 	var frontend_path = '<?php echo FRONTEND_PATH; ?>';
 	var unit_system = '<?php echo self::UNIT_SYSTEM; ?>';
+	var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+	var call_length = 120000;
 	j( document ).ready(function() {
 		handle_server_response(<?php echo $data; ?>);
+		setInterval(function () {
+			request_server_data();
+		},call_length);
+		j('#reload').on('click',function () {
+			request_server_data();
+		})
 	});
+	function request_server_data() {
+		j.ajax({
+			url: ajaxurl,
+			data: {'action': 'falcon_weather'},
+			beforeSend: function () {
+				j('#reload img').addClass('spinning-arrows');
+				j('#weather').addClass('reloading');
+			},
+			complete: function () {
+				j('#reload img').removeClass('spinning-arrows');
+				j('#weather').removeClass('reloading');
+			},
+			success: function (data) {
+				handle_server_response(data);
+			}
+		});
+	}
 
 	function handle_server_response(data) {
 		if (data['error'] != undefined) {
@@ -59,18 +84,10 @@
 		});
 		return type+'-high.svg';
 	}
-	var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-	var call_length = 120000;
-	setInterval(function () {
-		jQuery.get(
-			ajaxurl,
-			{
-				'action': 'falcon_weather',
-			},
-			function(data){
-				handle_server_response(data);
-			}
-		);
-	},call_length);
 </script>
-<div id="weather"></div>
+<div id="falcon-weather">
+	<a id="reload" href="#">
+		<img src="<?php echo FRONTEND_PATH;?>/assets/icons/reload.svg">reload
+	</a>
+	<div id="weather"></div>
+</div>
