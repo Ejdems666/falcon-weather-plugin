@@ -20,7 +20,6 @@
 			jQuery.each(data['data']['cities'],function (index,city_data) {
 				weather_boxes += create_box(city_data);
 			});
-			console.log(weather_boxes);
 			j('#weather').html(weather_boxes);
 		}
 	}

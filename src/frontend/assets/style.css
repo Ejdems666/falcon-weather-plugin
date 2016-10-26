@@ -23,6 +23,9 @@
     margin: 0px;
     list-style-type: none;
 }
+.description img{
+    margin-left: 5px;
+}
 .description li {
     margin-bottom: 10px;
 }
