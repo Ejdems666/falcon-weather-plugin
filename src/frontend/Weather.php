@@ -3,7 +3,6 @@
 namespace Plugin\Frontend;
 
 use Cmfcmf\OpenWeatherMap;
-use Cmfcmf\OpenWeatherMap\CurrentWeather;
 use Plugin\Admin\Settings;
 
 class Weather extends OpenWeatherMap {

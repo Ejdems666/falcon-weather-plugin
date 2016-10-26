@@ -8,7 +8,6 @@ Author: Adam Becvar
 Author URI: http://adambecvar.cz
 License: A "Slug" license name e.g. GPL2
 */
-use Plugin\Frontend\Weather;
 use Plugin\Plugin;
 
 if ( ! defined( 'WPINC' ) ) {
