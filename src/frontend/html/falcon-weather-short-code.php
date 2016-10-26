@@ -25,10 +25,12 @@
 			data: {'action': 'falcon_weather'},
 			beforeSend: function () {
 				j('#reload img').addClass('spinning-arrows');
+				j('#reload span').text('reloading...');
 				j('#weather').addClass('reloading');
 			},
 			complete: function () {
 				j('#reload img').removeClass('spinning-arrows');
+				j('#reload span').text('reload');
 				j('#weather').removeClass('reloading');
 			},
 			success: function (data) {
@@ -87,7 +89,8 @@
 </script>
 <div id="falcon-weather">
 	<a id="reload" href="#">
-		<img src="<?php echo FRONTEND_PATH;?>/assets/icons/reload.svg">reload
+		<img src="<?php echo FRONTEND_PATH;?>/assets/icons/reload.svg">
+		<span>reload</span>
 	</a>
 	<div id="weather"></div>
 </div>
