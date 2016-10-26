@@ -27,7 +27,7 @@ class Weather extends OpenWeatherMap {
 	}
 
 	private function load_all_cities() {
-		$cities = array( 'Berlin', 'Copenhagen', 'Budapest', 'New York' );
+		$cities = array( 'Copenhagen', 'New York', 'Berlin', 'Budapest' );
 
 		foreach ( $cities as $key => $city ) {
 			$weather                                                        = $this->getWeather( $city, $this->data['data']['unit_system'] );
