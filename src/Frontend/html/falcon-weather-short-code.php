@@ -42,7 +42,6 @@
 	}
 
 	function handle_server_response(data) {
-		console.log(data);
 		if (data['error'] != undefined) {
 			console.log(data['error']);
 		} else if(data['data'] != undefined){
