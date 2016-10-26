@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 require __DIR__ . '/vendor/autoload.php';
 define( 'MAIN_FILE_PATH', __FILE__ );
-define( 'FRONTEND_PATH', plugin_dir_url( __FILE__ ) . 'src/frontend' );
+define( 'ASSETS_PATH', ($_SERVER['REQUEST_URI'] != '/' ? $_SERVER['REQUEST_URI'] : '') . '/wp-content/plugins/falcon-weather-plugin/src/Frontend/assets' );
 define( 'PLUGIN_PATH', plugin_dir_url( __FILE__ ) );
 
 $plugin = new Plugin();
