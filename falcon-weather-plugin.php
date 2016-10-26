@@ -8,6 +8,7 @@ Author: Adam Becvar
 Author URI: http://adambecvar.cz
 License: A "Slug" license name e.g. GPL2
 */
+use Plugin\Frontend\Weather;
 use Plugin\Plugin;
 
 if ( ! defined( 'WPINC' ) ) {
@@ -16,7 +17,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 require __DIR__ . '/vendor/autoload.php';
 define('MAIN_FILE_PATH',__FILE__);
-define('FRONTEND_PATH',plugin_dir_url( __FILE__ ).'/src/frontend');
+define('FRONTEND_PATH',plugin_dir_url( __FILE__ ).'src/frontend');
+define('PLUGIN_PATH',plugin_dir_url( __FILE__ ));
 
 $plugin = new Plugin();
 $plugin->run();
