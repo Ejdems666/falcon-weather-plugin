@@ -1,5 +1,5 @@
-<script src="<?php echo FRONTEND_PATH; ?>/assets/jquery-3.1.0.min.js"></script>
 <script>
+	var j = jQuery.noConflict();
 	var unit_mapper = {
 		'metric' : {
 			'wind' : {'low' : 5, 'medium' :  10},
@@ -8,7 +8,7 @@
 	};
 	var frontend_path = '<?php echo FRONTEND_PATH; ?>';
 	var unit_system = '<?php echo self::UNIT_SYSTEM; ?>';
-	$( document ).ready(function() {
+	j( document ).ready(function() {
 		handle_server_response(<?php echo $data; ?>);
 	});
 
@@ -20,7 +20,8 @@
 			jQuery.each(data['data']['cities'],function (index,city_data) {
 				weather_boxes += create_box(city_data);
 			});
-			$('#weather').html(weather_boxes);
+			console.log(weather_boxes);
+			j('#weather').html(weather_boxes);
 		}
 	}
 	function create_box(data) {
@@ -52,7 +53,7 @@
 		return '<img src="'+frontend_path+'/assets/icons/'+icon+'" alt="temperature">';
 	}
 	function get_icon(type, actualValue) {
-		$(unit_mapper[unit_system][type]).each(function(key, measurement) {
+		j(unit_mapper[unit_system][type]).each(function(key, measurement) {
 			if(actualValue < measurement) {
 				return type+'-'+key+'.svg';
 			}
@@ -60,8 +61,8 @@
 		return type+'-high.svg';
 	}
 	var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-	var call_length = 20000;
-	setTimeout(function () {
+	var call_length = 120000;
+	setInterval(function () {
 		jQuery.get(
 			ajaxurl,
 			{

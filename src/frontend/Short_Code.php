@@ -10,8 +10,9 @@ class Short_Code {
 		add_shortcode( 'falcon_weather', array( $this, 'render_falcon_weather' ) );
 	}
 
-	public function enqueue_styles() {
+	public function enqueue_scripts_and_styles() {
 		wp_enqueue_style( 'style.css', FRONTEND_PATH . '/assets/style.css' );
+		wp_enqueue_script('jquery');
 	}
 
 	public function render_falcon_weather() {
