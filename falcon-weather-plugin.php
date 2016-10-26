@@ -1,12 +1,11 @@
 <?php
 /*
 Plugin Name: Falcon Weather Plugin
-Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
 Description: Showing weather information from cities where Falcon has offices.
 Version: 1.0
 Author: Adam Becvar
 Author URI: http://adambecvar.cz
-License: A "Slug" license name e.g. GPL2
+License: GPL2
 */
 use Plugin\Plugin;
 
