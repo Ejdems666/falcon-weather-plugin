@@ -36,7 +36,7 @@ class Short_Code {
 	public function render_falcon_weather() {
 		$cities = $this->weather_api->get_falcon_weather(self::UNIT);
 
-		require 'html/falcon_weather.php';
+		require 'html/falcon-weather-short-code.php';
 	}
 
 	public function getWindIcon( Wind $wind ) {
