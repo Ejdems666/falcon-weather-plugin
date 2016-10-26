@@ -85,7 +85,6 @@
 		var icon = null;
 		j.each(unit_mapper[unit_system][type], function (key, measurement) {
 			if (actualValue < measurement) {
-				console.log(type+' '+actualValue+' '+measurement + key);
 				icon = type + '-' + key + '.svg';
 				return false;
 			}

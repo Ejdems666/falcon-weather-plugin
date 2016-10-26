@@ -35,5 +35,6 @@ class Plugin {
 		$short_code = new Short_Code();
 		$this->hook_loader->add_action( 'wp_enqueue_scripts', $short_code, 'enqueue_scripts_and_styles' );
 		$this->hook_loader->add_action( 'wp_ajax_nopriv_falcon_weather', $short_code, 'get_falcon_weather' );
+		$this->hook_loader->add_action( 'wp_ajax_falcon_weather', $short_code, 'get_falcon_weather' );
 	}
 }
