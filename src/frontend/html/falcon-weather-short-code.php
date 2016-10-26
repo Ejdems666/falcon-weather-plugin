@@ -16,7 +16,9 @@
 			request_server_data();
 		},call_length);
 		j('#reload').on('click',function () {
-			request_server_data();
+			if(!j(this).hasClass('reloading')) {
+				request_server_data();
+			}
 		})
 	});
 	function request_server_data() {
@@ -26,12 +28,12 @@
 			beforeSend: function () {
 				j('#reload img').addClass('spinning-arrows');
 				j('#reload span').text('reloading...');
-				j('#weather').addClass('reloading');
+				j('#weather, #reload').addClass('reloading');
 			},
 			complete: function () {
 				j('#reload img').removeClass('spinning-arrows');
 				j('#reload span').text('reload');
-				j('#weather').removeClass('reloading');
+				j('#weather, #reload').removeClass('reloading');
 			},
 			success: function (data) {
 				handle_server_response(data);
@@ -88,9 +90,9 @@
 	}
 </script>
 <div id="falcon-weather">
-	<a id="reload" href="#">
+	<div id="reload">
 		<img src="<?php echo FRONTEND_PATH;?>/assets/icons/reload.svg">
 		<span>reload</span>
-	</a>
+	</div>
 	<div id="weather"></div>
 </div>
